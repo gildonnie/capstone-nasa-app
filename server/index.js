@@ -1,5 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
+// const mongoo = require('mongoose');
+// mongoo.connect('mongodb://localhost:27017/test');
 
 const app = express();
 const PORT = process.env.PORT || 9000;
