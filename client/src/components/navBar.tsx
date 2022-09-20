@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const NavWrap = styled.div`
   display: flex;
@@ -14,6 +15,11 @@ const NavWrap = styled.div`
     display: flex;
     li {
       margin-left: 2rem;
+      a {
+        text-decoration: none;
+        color: #ffff;
+      }
+      
     }
   }
 `;
@@ -23,8 +29,15 @@ function Nav() {
     <NavWrap>
       <h1>NASA</h1>
       <ul>
-        <li>Home</li>
-        <li>Explore</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/explore">Explore</Link>
+        </li>
+        <li>
+          <Link to="favorites">Favorites</Link>
+        </li>
         <li>Login</li>
       </ul>
     </NavWrap>

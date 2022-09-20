@@ -21,6 +21,7 @@
     ],
     "rules": {
       "linebreak-style": ["error", "unix"],
+      "no-underscore-dangle": "off",
         "import/extensions": [
             "error",
             "always",
