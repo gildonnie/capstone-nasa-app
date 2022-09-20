@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // import TsParticles from '../components/tsParticles';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import Space from '../Images/space.jpg';
 import Space3 from '../Images/space3.jpg';
 

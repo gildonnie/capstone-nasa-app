@@ -19,7 +19,7 @@ function Explore() {
   return (
     <Container>
       <ExploreWrap><Link to="/apod">Picture of The Day</Link></ExploreWrap>
-      <ExploreWrap>Rovers</ExploreWrap>
+      <ExploreWrap><Link to="/rover">Rovers</Link></ExploreWrap>
       <ExploreWrap>Objects Near Earth</ExploreWrap>
     </Container>
   );

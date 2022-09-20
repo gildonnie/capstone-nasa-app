@@ -1,13 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Apod from './pages/Apod';
-import Favorites from './pages/favorties';
+import Favorites from './pages/Favorites';
 // import Asteroid from './pages/Asteroid';
-// import Rover from './components/roverData';
+import Rover from './components/RoverData';
 import GlobalStyle from './globalStyles';
-import Home from './pages/home';
+import Home from './pages/Home';
 import Explore from './pages/Explore';
-import Nav from './components/navBar';
+import Nav from './components/NavBar';
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/apod" element={<Apod />} />
         <Route path="/favorites" element={<Favorites />} />
-        {/* <Asteroid />
-        <Rover /> */}
+        {/* <Asteroid /> */}
+        <Route path="/rover" element={<Rover />} />
       </Routes>
     </>
   );

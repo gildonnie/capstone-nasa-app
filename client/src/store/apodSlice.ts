@@ -27,16 +27,6 @@ const initialState = {
   error: false,
 } as dataApod;
 
-// export const fetchFavorites = createAsyncThunk(
-//   'favorites/fetchFavorites',
-//   async () => {
-//     const dataFavs = await axios
-//       .get('http://localhost:5000/favorites');
-//     console.log(dataFavs);
-//     return dataFavs.data;
-//   },
-// );
-
 export const apodSlice = createSlice({
   name: 'data',
   initialState,
@@ -54,22 +44,6 @@ export const apodSlice = createSlice({
       state.favorite = payload;
     },
   },
-  // extraReducers(builder) {
-  //   builder
-  //     .addCase(fetchFavorites.pending, (state) => {
-  //       state.error = false;
-  //       state.loading = true;
-  //     })
-  //     .addCase(fetchFavorites.fulfilled, (state, { payload }) => {
-  //       state.error = false;
-  //       state.loading = false;
-  //       state.favorite = payload;
-  //     })
-  //     .addCase(fetchFavorites.rejected, (state) => {
-  //       state.error = true;
-  //       state.loading = false;
-  //     });
-  // },
 });
 
 export const {

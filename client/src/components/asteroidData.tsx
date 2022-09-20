@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useAppDispatch } from '../store/hooks';
 import { setData } from '../store/asteroidSlice';
 
@@ -10,12 +9,12 @@ function asteroidData() {
   const endDate = '2022-09-08';
   const dispatch = useAppDispatch();
   useEffect(() => {
-    axios
-      .get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`)
-      .then((res) => {
-        dispatch(setData(res.data));
-      })
-      .catch((err) => console.log(err));
+    async function getAsteroidData() {
+      const res = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`);
+      const dataAsteroid = await res.json();
+      dispatch(setData(dataAsteroid));
+    }
+    getAsteroidData();
   }, [dispatch]);
   return (
     <>

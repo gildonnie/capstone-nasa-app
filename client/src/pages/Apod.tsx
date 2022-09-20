@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { shallowEqual } from 'react-redux';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { RootState } from '../store';
-import ApodData from '../components/apodData';
+import ApodData from '../components/ApodData';
 import { setNewDate, setInput } from '../store/apodSlice';
 
 const Wrapper = styled.section`
@@ -11,13 +12,13 @@ const Wrapper = styled.section`
 
 function Apod() {
   const dispatch = useAppDispatch();
-  const { apData, input } = useAppSelector((state: RootState) => state.apod);
+  const { apData, input } = useAppSelector((state: RootState) => state.apod, shallowEqual);
   const {
     url, title, date, explanation,
   } = apData;
 
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     dispatch(setNewDate(input));
   };
 
@@ -27,7 +28,7 @@ function Apod() {
       date: { date },
       url: { url },
     };
-    const results = await fetch('http://localhost:5000/favorites', {
+    const results = await fetch('/favorites', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
