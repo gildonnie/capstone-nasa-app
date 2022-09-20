@@ -1,9 +1,9 @@
 const { default: mongoose } = require('mongoose');
-const favorite = require('../models/Favorite.js')
+const Favorite = require('../models/Favorite.js')
 
 const getFavorites = async (req, res) => {
   try {
-    const favorites = await favorite.find();
+    const favorites = await Favorite.find();
     res.status(200).json(favorites);
   } catch (error) {
     res.status(404).json({message: error.message})
@@ -27,7 +27,7 @@ const deleteFavorite = async (req, res) => {
     return res.status(404).send('No favorites with that id')
   };
 
-  await favorite.findByIdAndRemove(_id);
+  await Favorite.findByIdAndRemove(_id);
   res.json({ message: 'Favorite Deleted'})
 
 };
