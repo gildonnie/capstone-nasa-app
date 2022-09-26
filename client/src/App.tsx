@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Apod from './pages/Apod';
 import Favorites from './pages/Favorites';
 // import Asteroid from './pages/Asteroid';
-import Rover from './components/RoverData';
+import Rover from './pages/Rover';
 import GlobalStyle from './globalStyles';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
