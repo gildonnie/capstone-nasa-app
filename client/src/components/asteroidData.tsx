@@ -4,7 +4,7 @@ import { setData } from '../store/asteroidSlice';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-function asteroidData() {
+function AsteroidData() {
   const startDate = '2022-09-08';
   const endDate = '2022-09-08';
   const dispatch = useAppDispatch();
@@ -22,4 +22,4 @@ function asteroidData() {
   );
 }
 
-export default asteroidData;
+export default AsteroidData;
