@@ -5,6 +5,7 @@ import RoverData from '../components/RoverData';
 import { RootState } from '../store';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { setRoverSettings } from '../store/roverSlice';
+import RorverCameras from '../components/RoverCameras.json';
 
 function Rover() {
   const disabled = true;
@@ -20,6 +21,9 @@ function Rover() {
     }));
   };
 
+  const perserverance = RorverCameras.perserveranceCameras;
+  const regCameras = RorverCameras.regularCameras;
+  console.log(perserverance);
   const rover = rovData.name;
   switch (rover) {
     case 'Curiosity':
@@ -44,6 +48,32 @@ function Rover() {
       (document.getElementById('NAVCAM') as HTMLInputElement).disabled = false;
       (document.getElementById('PANCAM') as HTMLInputElement).disabled = false;
       (document.getElementById('MINITES') as HTMLInputElement).disabled = false;
+      break;
+    case 'Perseverance':
+      (document.getElementById('FHAZ') as HTMLInputElement).disabled = true;
+      (document.getElementById('RHAZ') as HTMLInputElement).disabled = true;
+      (document.getElementById('MAST') as HTMLInputElement).disabled = true;
+      (document.getElementById('CHEMCAM') as HTMLInputElement).disabled = true;
+      (document.getElementById('MAHLI') as HTMLInputElement).disabled = true;
+      (document.getElementById('MARDI') as HTMLInputElement).disabled = true;
+      (document.getElementById('NAVCAM') as HTMLInputElement).disabled = true;
+      (document.getElementById('PANCAM') as HTMLInputElement).disabled = true;
+      (document.getElementById('MINITES') as HTMLInputElement).disabled = true;
+      (document.getElementById('EDL_RUCAM') as HTMLInputElement).disabled = false;
+      (document.getElementById('EDL_RDCAM') as HTMLInputElement).disabled = false;
+      (document.getElementById('EDL_DDCAM') as HTMLInputElement).disabled = false;
+      (document.getElementById('EDL_PUCAM1') as HTMLInputElement).disabled = false;
+      (document.getElementById('EDL_PUCAM2') as HTMLInputElement).disabled = false;
+      (document.getElementById('NAVCAM_LEFT') as HTMLInputElement).disabled = false;
+      (document.getElementById('NAVCAM_RIGHT') as HTMLInputElement).disabled = false;
+      (document.getElementById('MCZ_RIGHT') as HTMLInputElement).disabled = false;
+      (document.getElementById('MCZ_LEFT') as HTMLInputElement).disabled = false;
+      (document.getElementById('FRONT_HAZCAM_LEFT_A') as HTMLInputElement).disabled = false;
+      (document.getElementById('FRONT_HAZCAM_RIGHT_A') as HTMLInputElement).disabled = false;
+      (document.getElementById('REAR_HAZCAM_LEFT') as HTMLInputElement).disabled = false;
+      (document.getElementById('REAR_HAZCAM_RIGHT') as HTMLInputElement).disabled = false;
+      (document.getElementById('SKYCAM') as HTMLInputElement).disabled = false;
+      (document.getElementById('SHERLOC_WATSON') as HTMLInputElement).disabled = false;
       break;
     default:
   }
@@ -112,105 +142,35 @@ function Rover() {
           </fieldset>
           <fieldset>
             <legend>Camera:</legend>
-            <label htmlFor="FHAZ">
-              <input
-                type="radio"
-                name="camera"
-                id="FHAZ"
-                value="FHAZ"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Front Hazard Avoidance Camera
-            </label>
-            <label htmlFor="RHAZ">
-              <input
-                type="radio"
-                name="camera"
-                id="RHAZ"
-                value="RHAZ"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Rear Hazard Avoidance Camera
-            </label>
-            <label htmlFor="MAST">
-              <input
-                type="radio"
-                name="camera"
-                id="MAST"
-                value="MAST"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Mast Camera
-            </label>
-            <label htmlFor="CHEMCAM">
-              <input
-                type="radio"
-                name="camera"
-                id="CHEMCAM"
-                value="CHEMCAM"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Chemistry and Camera Complex
-            </label>
-            <label htmlFor="MAHLI">
-              <input
-                type="radio"
-                name="camera"
-                id="MAHLI"
-                value="MAHLI"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Mars Hand Lens Imager
-            </label>
-            <label htmlFor="MARDI">
-              <input
-                type="radio"
-                name="camera"
-                id="MARDI"
-                value="MARDI"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Mars Descent Imager
-            </label>
-            <label htmlFor="NAVCAM">
-              <input
-                type="radio"
-                name="camera"
-                id="NAVCAM"
-                value="NAVCAM"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Navigation Camera
-            </label>
-            <label htmlFor="MAST">
-              <input
-                type="radio"
-                name="camera"
-                id="PANCAM"
-                value="PANCAM"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Panoramic Camera
-            </label>
-            <label htmlFor="MINITES">
-              <input
-                type="radio"
-                name="camera"
-                id="MINITES"
-                value="MINITES"
-                onChange={handleChange}
-                disabled={disabled}
-              />
-              Miniature Thermal Emission Spectrometer (Mini-TES)
-            </label>
+            {regCameras.map((cameras) => (
+              <label htmlFor={cameras.Abbreviation}>
+                <input
+                  type="radio"
+                  name="camera"
+                  id={cameras.Abbreviation}
+                  value={cameras.Abbreviation}
+                  onChange={handleChange}
+                  disabled={disabled}
+                />
+                {cameras.Name}
+              </label>
+            ))}
+          </fieldset>
+          <fieldset>
+            <legend>Perserverance Cameras</legend>
+            {perserverance.map((cameras) => (
+              <label htmlFor={cameras.Abbreviation}>
+                <input
+                  type="radio"
+                  name="camera"
+                  id={cameras.Abbreviation}
+                  value={cameras.Abbreviation}
+                  onChange={handleChange}
+                  disabled={disabled}
+                />
+                {cameras.Name}
+              </label>
+            ))}
           </fieldset>
         </form>
       </div>
