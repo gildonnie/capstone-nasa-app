@@ -12,7 +12,7 @@ const getFavorites = async (req, res) => {
 
 const addFavorite = async (req, res) => {
   const nFavorite = req.body;
-  const favorited = new favorite(nFavorite);
+  const favorited = new Favorite(nFavorite);
   try {
     await favorited.save();
     res.status(201).json(favorited);

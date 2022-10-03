@@ -5,7 +5,7 @@ import { setData } from '../store/apodSlice';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-function apodData() {
+function ApodData() {
   const dispatch = useAppDispatch();
   const newDate = useAppSelector(
     (state) => state.apod.newDate,
@@ -25,4 +25,4 @@ function apodData() {
   );
 }
 
-export default apodData;
+export default ApodData;
