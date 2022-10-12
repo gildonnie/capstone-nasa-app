@@ -2,18 +2,36 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '.';
 
+type orbitalProps = {
+  first_observation_date: string
+  last_observation_date: string
+}
+type mileProp = {
+  estimated_diameter_max: number
+  estimated_diameter_min: number
+}
+type diaProps = {
+  miles: mileProp
+}
+
 type dataAsteroidTypes = {
-  asData: {}
+  name: string
+  is_potentially_hazardous_asteroid: boolean
+  orbital_data: orbitalProps
+  estimated_diameter: diaProps
+  name_limited: string
+  absolute_magnitude_h: number
+  id: string
  }
 
 type dataAsteroid = {
-  asData: dataAsteroidTypes;
+  asData: dataAsteroidTypes[];
   loading: boolean;
   error: boolean;
 }
 
 const initialState = {
-  asData: {},
+  asData: [],
   loading: true,
   error: false,
 } as dataAsteroid;
