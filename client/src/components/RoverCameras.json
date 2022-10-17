@@ -1,0 +1,103 @@
+{
+  "regularCameras": [
+    {
+      "Abbreviation": "FHAZ",
+      "Name": "Front Hazard Avoidance Camera"
+    },
+    {
+      "Abbreviation": "RHAZ",
+      "Name": "Rear Hazard Avoidance Camera"
+    },
+    {
+      "Abbreviation": "MAST",
+      "Name": "Mast Camera"
+    },
+    {
+      "Abbreviation": "CHEMCAM",
+      "Name": "Chemistry and Camera Complex"
+    },
+    {
+      "Abbreviation": "MAHLI",
+      "Name": "Mars Hand Lens Imager"
+    },
+    {
+      "Abbreviation": "MARDI",
+      "Name": "Mars Descent Imager"
+    },
+    {
+      "Abbreviation": "NAVCAM",
+      "Name": "Navigation Camera"
+    },
+    {
+      "Abbreviation": "PANCAM",
+      "Name": "Panoramic Camera"
+    },
+    {
+      "Abbreviation": "MINITES",
+      "Name": "Miniature Thermal Emission Spectrometer (Mini-TES)"
+    }
+  ],
+  "perserveranceCameras": 
+  [
+    {
+      "Abbreviation": "EDL_RUCAM",
+      "Name": "Rover Up-Look Camera"
+    },
+    {
+      "Abbreviation": "EDL_RDCAM",
+      "Name": "Rover Down-Look Camera"
+    },
+    {
+      "Abbreviation": "EDL_DDCAM",
+      "Name": "Descent Stage Down-Look Camera"
+    },
+    {
+      "Abbreviation": "EDL_PUCAM1",
+      "Name": "Parachute Up-Look Camera A"
+    },
+    {
+      "Abbreviation": "EDL_PUCAM2",
+      "Name": "Parachute Up-Look Camera B"
+    },
+    {
+      "Abbreviation": "NAVCAM_LEFT",
+      "Name": "Navigation Camera - Left"
+    },
+    {
+      "Abbreviation": "NAVCAM_RIGHT",
+      "Name": "Navigation Camera - Right"
+    },
+    {
+      "Abbreviation": "MCZ_RIGHT",
+      "Name": "Mast Camera Zoom - Right"
+    },
+    {
+      "Abbreviation": "MCZ_LEFT",
+      "Name": "Mast Camera Zoom - Left"
+    },
+    {
+      "Abbreviation": "FRONT_HAZCAM_LEFT_A",
+      "Name": "Front Hazard Avoidance Camera - Left"
+    },
+    {
+      "Abbreviation": "FRONT_HAZCAM_RIGHT_A",
+      "Name": "Front Hazard Avoidance Camera - Right"
+    },
+    {
+      "Abbreviation": "REAR_HAZCAM_LEFT",
+      "Name": "Rear Hazard Avoidance Camera - Left"
+    },
+    {
+      "Abbreviation": "REAR_HAZCAM_RIGHT",
+      "Name": "Rear Hazard Avoidance Camera - Right"
+    },
+    {
+      "Abbreviation": "SKYCAM",
+      "Name": "MEDA Skycam"
+    },
+    {
+      "Abbreviation": "SHERLOC_WATSON",
+      "Name": "SHERLOC WATSON Camera"
+    }
+  ]
+}

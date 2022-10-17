@@ -1,24 +1,39 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch } from '../store/hooks';
-import { setData } from '../store/roverSlice';
+import { RootState } from '../store';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { setData, setRovData } from '../store/roverSlice';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-function roverData() {
+function RoverData() {
+  const { roverSettings } = useAppSelector((state: RootState) => state.rover);
   const dispatch = useAppDispatch();
+  const { rover, sol, camera } = roverSettings;
   useEffect(() => {
     async function getRoverData() {
-      const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/latest_photos?api_key=${apiKey}`);
+      const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=1&camera=${camera}&api_key=${apiKey}`);
       const dataRover = await res.json();
-      dispatch(setData(dataRover));
+      dispatch(setData(dataRover.photos));
     }
-    getRoverData();
-  }, [dispatch]);
+    if (rover && sol && camera) {
+      getRoverData();
+    }
+  }, [dispatch, roverSettings]);
 
+  useEffect(() => {
+    async function getRoverData() {
+      const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}/?api_key=${apiKey}`);
+      const dataRover = await res.json();
+      dispatch(setRovData(dataRover.photo_manifest));
+    }
+    if (rover) {
+      getRoverData();
+    }
+  }, [dispatch, roverSettings]);
   return (
     <>
     </>
   );
 }
 
-export default roverData;
+export default RoverData;
