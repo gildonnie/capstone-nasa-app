@@ -2,15 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 // import TsParticles from '../components/tsParticles';
 import Footer from '../components/Footer';
-import Space from '../images/space.jpg';
-import Space3 from '../images/space3.jpg';
+// import Space from '../images/space.jpg';
+// import Space3 from '../images/space3.jpg';
+import Earth from '../images/earth.jpg';
+import Earth2 from '../images/windowEarth.jpg';
+import Nav from '../components/NavBar';
 
 const BackImg = styled.div`
-  background-image: url(${Space});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${Earth});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 890px;
+  width: 100%;
+  height: 100vh;
   h1 {
     margin: 0;
     padding-top: 5rem;
@@ -24,15 +28,20 @@ const BackImg = styled.div`
     font-size: 20px;
   }
 `;
-const Img = styled.div`
-  background-image: url(${Space3});
-  min-height: 400px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
+// const Img = styled.div`
+//   background-image: url(${Space3});
+//   min-height: 400px;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// `;
 
 const InfoContainer = styled.div`
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${Earth2});
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+div {
   width: 900px;
   text-align: center;
   margin-left: 50%;
@@ -40,6 +49,7 @@ const InfoContainer = styled.div`
   h1 {
     color: #96B1AD;
   }
+}
   
 `;
 
@@ -67,8 +77,9 @@ function Home() {
   return (
     <>
       <BackImg>
-        <h1>NASA</h1>
-        <h2>National Aeronautics and Space Administration</h2>
+        <Nav />
+        <h1>ES</h1>
+        <h2>Explore Space</h2>
       </BackImg>
       {/* <TsParticles /> */}
       <InfoContainer>
@@ -99,7 +110,7 @@ function Home() {
             also supports education efforts in STEM with an emphasis on increasing diversity in our
             future workforce.
           </p>
-          <Img />
+          {/* <Img /> */}
         </div>
         <div>
           <h1>What is Explore Space (ES)?</h1>

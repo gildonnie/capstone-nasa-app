@@ -7,13 +7,13 @@ import Rover from './pages/Rover';
 import GlobalStyle from './globalStyles';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
-import Nav from './components/NavBar';
+// import Nav from './components/NavBar';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Nav />
+      {/* <Nav /> */}
       <Routes>
         <Route index element={<Home />} />
         <Route path="/explore" element={<Explore />} />

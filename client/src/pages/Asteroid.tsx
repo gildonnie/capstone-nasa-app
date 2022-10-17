@@ -74,7 +74,6 @@ function Asteroid() {
   const handleOpen = (event: React.SetStateAction<cardDataProps>) => {
     setOpen(true);
     setCardData(event);
-    console.log(cardData);
   };
   const bool = cardData.is_potentially_hazardous_asteroid;
   const str = bool === true ? 'Yes' : 'No';
