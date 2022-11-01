@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const FooterWrap = styled.div`
   bottom: 0;
   display: grid;
+  // border-top: 1px #96B1AD solid;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
   height: 300px;
