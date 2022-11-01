@@ -1,19 +1,87 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { shallowEqual } from 'react-redux';
-import Slider from '../components/Slider';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import ImageComponent from '../components/ImageComponent';
 import RoverData from '../components/RoverData';
 import { RootState } from '../store';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { setRoverSettings } from '../store/roverSlice';
 import RorverCameras from '../components/RoverCameras.json';
+import MarsBack from '../images/marsBack.jpg';
+import NavBar from '../components/NavBar';
+
+const Wrapper = styled.div`
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${MarsBack});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 150vh;
+  text-align: center;
+  .body {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  form {
+    margin-top: -3rem;
+  }
+`;
+const FieldWrap = styled.fieldset`
+  background-color: rgb(211,114,58 , 0.3);
+  width: 500px;
+  border-radius: 1rem;
+  border: 1px solid black;
+  padding: .5rem;
+  label {
+    input {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+    input[type="radio"] {
+      appearance: none;
+      font: inherit;
+      color: currentColor;
+      width: 1em;
+      height: 1em;
+      border: 0.15em solid currentColor;
+      border-radius: 50%;
+      transform: translateY(1.5em);
+      display: grid;
+    }
+    
+    input[type="radio"]::before {
+      content: "";
+      width: 0.65em;
+      height: 0.65em;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: #A27468;
+    }
+    
+    input[type="radio"]:checked::before {
+      transform: scale(1);
+    }
+    
+    input[type="radio"]:focus {
+      outline: max(2px, 0.15em) solid currentColor;
+      outline-offset: max(2px, 0.15em);
+    }
+  }
+ 
+`;
 
 function Rover() {
-  const disabled = true;
+  const [show, setShow] = useState(true);
   const { roverSettings, rovData } = useAppSelector((
     state: RootState,
   ) => state.rover, shallowEqual);
   const dispatch = useAppDispatch();
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setShow(false);
     const { name, value } = e.currentTarget;
     dispatch(setRoverSettings({
       ...roverSettings,
@@ -25,164 +93,128 @@ function Rover() {
   const regCameras = RorverCameras.regularCameras;
   console.log(perserverance);
   const rover = rovData.name;
-  switch (rover) {
-    case 'Curiosity':
-      (document.getElementById('FHAZ') as HTMLInputElement).disabled = false;
-      (document.getElementById('RHAZ') as HTMLInputElement).disabled = false;
-      (document.getElementById('MAST') as HTMLInputElement).disabled = false;
-      (document.getElementById('CHEMCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('MAHLI') as HTMLInputElement).disabled = false;
-      (document.getElementById('MARDI') as HTMLInputElement).disabled = false;
-      (document.getElementById('NAVCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('PANCAM') as HTMLInputElement).disabled = true;
-      (document.getElementById('MINITES') as HTMLInputElement).disabled = true;
-      break;
-    case 'Opportunity':
-    case 'Spirit':
-      (document.getElementById('FHAZ') as HTMLInputElement).disabled = false;
-      (document.getElementById('RHAZ') as HTMLInputElement).disabled = false;
-      (document.getElementById('MAST') as HTMLInputElement).disabled = true;
-      (document.getElementById('CHEMCAM') as HTMLInputElement).disabled = true;
-      (document.getElementById('MAHLI') as HTMLInputElement).disabled = true;
-      (document.getElementById('MARDI') as HTMLInputElement).disabled = true;
-      (document.getElementById('NAVCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('PANCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('MINITES') as HTMLInputElement).disabled = false;
-      break;
-    case 'Perseverance':
-      (document.getElementById('FHAZ') as HTMLInputElement).disabled = true;
-      (document.getElementById('RHAZ') as HTMLInputElement).disabled = true;
-      (document.getElementById('MAST') as HTMLInputElement).disabled = true;
-      (document.getElementById('CHEMCAM') as HTMLInputElement).disabled = true;
-      (document.getElementById('MAHLI') as HTMLInputElement).disabled = true;
-      (document.getElementById('MARDI') as HTMLInputElement).disabled = true;
-      (document.getElementById('NAVCAM') as HTMLInputElement).disabled = true;
-      (document.getElementById('PANCAM') as HTMLInputElement).disabled = true;
-      (document.getElementById('MINITES') as HTMLInputElement).disabled = true;
-      (document.getElementById('EDL_RUCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('EDL_RDCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('EDL_DDCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('EDL_PUCAM1') as HTMLInputElement).disabled = false;
-      (document.getElementById('EDL_PUCAM2') as HTMLInputElement).disabled = false;
-      (document.getElementById('NAVCAM_LEFT') as HTMLInputElement).disabled = false;
-      (document.getElementById('NAVCAM_RIGHT') as HTMLInputElement).disabled = false;
-      (document.getElementById('MCZ_RIGHT') as HTMLInputElement).disabled = false;
-      (document.getElementById('MCZ_LEFT') as HTMLInputElement).disabled = false;
-      (document.getElementById('FRONT_HAZCAM_LEFT_A') as HTMLInputElement).disabled = false;
-      (document.getElementById('FRONT_HAZCAM_RIGHT_A') as HTMLInputElement).disabled = false;
-      (document.getElementById('REAR_HAZCAM_LEFT') as HTMLInputElement).disabled = false;
-      (document.getElementById('REAR_HAZCAM_RIGHT') as HTMLInputElement).disabled = false;
-      (document.getElementById('SKYCAM') as HTMLInputElement).disabled = false;
-      (document.getElementById('SHERLOC_WATSON') as HTMLInputElement).disabled = false;
-      break;
-    default:
-  }
+  const camerasByRover = {
+    Curiosity: ['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM'],
+    Opportunity: ['FHAZ', 'RHAZ', 'NAVCAM', 'PANCAM', 'MINITES'],
+    Spirit: ['FHAZ', 'RHAZ', 'NAVCAM', 'PANCAM', 'MINITES'],
+  };
+
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <RoverData />
-      <div>
-        <form>
-          <fieldset>
-            <legend>Rover:</legend>
-            <label htmlFor="curiosity">
-              <input
-                type="radio"
-                name="rover"
-                id="rover"
-                value="curiosity"
-                onChange={handleChange}
-              />
-              Curiosity
-            </label>
-            <label htmlFor="opportunity">
-              <input
-                type="radio"
-                name="rover"
-                id="rover"
-                value="opportunity"
-                onChange={handleChange}
-              />
-              Opportunity
-            </label>
-            <label htmlFor="spirit">
-              <input
-                type="radio"
-                name="rover"
-                id="rover"
-                value="spirit"
-                onChange={handleChange}
-              />
-              Spirit
-            </label>
-            <label htmlFor="perseverance">
-              <input
-                type="radio"
-                name="rover"
-                id="rover"
-                value="Perseverance"
-                onChange={handleChange}
-              />
-              Perseverance
-            </label>
-          </fieldset>
-          <fieldset>
-            <legend>Sol:</legend>
-            <label htmlFor="sol">
-              Enter Sol Date 0-
-              {rovData.max_sol}
-              {' '}
-              <input
-                type="text"
-                name="sol"
-                value={roverSettings.sol}
-                id="date"
-                onChange={handleChange}
-              />
-            </label>
-          </fieldset>
-          <fieldset>
-            <legend>Camera:</legend>
-            {regCameras.map((cameras) => (
-              <label htmlFor={cameras.Abbreviation}>
+      <Wrapper>
+        <NavBar />
+        <div className="body">
+          <form>
+            <FieldWrap>
+              <legend>Rover:</legend>
+              <label htmlFor="curiosity">
                 <input
                   type="radio"
-                  name="camera"
-                  id={cameras.Abbreviation}
-                  value={cameras.Abbreviation}
+                  name="rover"
+                  id="rover"
+                  value="curiosity"
                   onChange={handleChange}
-                  disabled={disabled}
                 />
-                {cameras.Name}
+                Curiosity
               </label>
-            ))}
-          </fieldset>
-          <fieldset>
-            <legend>Perserverance Cameras</legend>
-            {perserverance.map((cameras) => (
-              <label htmlFor={cameras.Abbreviation}>
+              <label htmlFor="opportunity">
                 <input
                   type="radio"
-                  name="camera"
-                  id={cameras.Abbreviation}
-                  value={cameras.Abbreviation}
+                  name="rover"
+                  id="rover"
+                  value="opportunity"
                   onChange={handleChange}
-                  disabled={disabled}
                 />
-                {cameras.Name}
+                Opportunity
               </label>
-            ))}
-          </fieldset>
-        </form>
-      </div>
-      <div>
-        {/* {rData.map((rovData) => (
-          <p>
-            {rovData.img_src}
-          </p>
-        ))} */}
-      </div>
-      <Slider />
-    </>
+              <label htmlFor="spirit">
+                <input
+                  type="radio"
+                  name="rover"
+                  id="rover"
+                  value="spirit"
+                  onChange={handleChange}
+                />
+                Spirit
+              </label>
+              <label htmlFor="perseverance">
+                <input
+                  type="radio"
+                  name="rover"
+                  id="rover"
+                  value="Perseverance"
+                  onChange={handleChange}
+                />
+                Perseverance
+              </label>
+            </FieldWrap>
+            {!show
+              ? (
+                <>
+                  <FieldWrap>
+                    <legend>Sol:</legend>
+                    <label htmlFor="sol">
+                      Enter Sol Date 0-
+                      {rovData.max_sol}
+                      {' '}
+                      <input
+                        type="text"
+                        name="sol"
+                        value={roverSettings.sol}
+                        id="date"
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </FieldWrap>
+                  <FieldWrap>
+                    <legend>Camera:</legend>
+                    {rover !== 'Perseverance' && regCameras.map((cameras) => (
+                      <>
+                        {rover && camerasByRover[rover as keyof typeof camerasByRover].includes(
+                          cameras.Abbreviation,
+                        ) && (
+                        <label id={cameras.Abbreviation} htmlFor={cameras.Abbreviation}>
+                          <input
+                            type="radio"
+                            name="camera"
+                            value={cameras.Abbreviation}
+                            onChange={handleChange}
+                          />
+                          {cameras.Name}
+                        </label>
+                        )}
+                        {' '}
+                      </>
+                    ))}
+                  </FieldWrap>
+                  <FieldWrap>
+                    <legend>Perserverance Cameras</legend>
+                    {rover === 'Perseverance' && perserverance.map((cameras) => (
+                      <label id={cameras.Abbreviation} htmlFor={cameras.Abbreviation}>
+                        <input
+                          type="radio"
+                          name="camera"
+                        // id={cameras.Abbreviation}
+                          value={cameras.Abbreviation}
+                          onChange={handleChange}
+                        />
+                        {cameras.Name}
+                      </label>
+                    ))}
+                  </FieldWrap>
+
+                </>
+              ) : null}
+          </form>
+        </div>
+        <ImageComponent />
+      </Wrapper>
+    </motion.div>
   );
 }
 

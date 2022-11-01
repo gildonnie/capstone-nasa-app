@@ -2,18 +2,47 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
+import { motion } from 'framer-motion';
+import NavBar from '../components/NavBar';
+import Stars from '../images/stars.jpg';
 
 const FavWrap = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${Stars});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1rem;
+  }
 `;
 const Border = styled.div`
   text-align: center;
-  border: 1px solid gray;
-  width: 200px;
-  height: auto;
-  img {
+  border: 1px solid #96B1AD;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  button {
     width: 150px;
+    height: 30px;
+    color: red;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid #00B2A7;
+    color: #00B2A7;
+    &:hover {
+      cursor: pointer;
+      border: 1px solid #96B1AD;
+      color: #96B1AD;
+    }
+  }
+  img {
+    width: 300px;
+    height: 200px;
   }
 `;
 
@@ -70,22 +99,30 @@ function Favorites() {
   };
 
   return (
-    <FavWrap>
-      {Object.keys(favorites).length > 0 && Object.keys(favorites).map((value) => {
-        const {
-          url, title, date, _id,
-        } = favorites[parseInt(value, 10)];
-        return (
-          <Border>
-            <img src={url} alt="favorite images" />
-            <p>{title}</p>
-            <p>{date}</p>
-            <button type="button" onClick={(e) => deleteFav(_id, e)}>Remove</button>
-          </Border>
-        );
-      })}
-
-    </FavWrap>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <FavWrap>
+        <NavBar />
+        <div className="wrapper">
+          {Object.keys(favorites).length > 0 && Object.keys(favorites).map((value) => {
+            const {
+              url, title, date, _id,
+            } = favorites[parseInt(value, 10)];
+            return (
+              <Border>
+                <img src={url} alt="favorite images" />
+                <p>{title}</p>
+                <p>{date}</p>
+                <button type="button" onClick={(e) => deleteFav(_id, e)}>Remove</button>
+              </Border>
+            );
+          })}
+        </div>
+      </FavWrap>
+    </motion.div>
   );
 }
 

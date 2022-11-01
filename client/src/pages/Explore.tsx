@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import ExploreImg from '../images/explore.jpg';
 import AsteroidPic from '../images/asteroid.jpg';
 import Mars from '../images/mars.jpg';
@@ -30,6 +31,7 @@ const Container = styled.div`
     margin-left: 8rem;
     filter: drop-shadow(0 0 .5rem #A27468);
     transition: .3s;
+    border-radius: 1.5rem;
     &:hover {
       transform: scale(1.1);
       z-index: 2;
@@ -40,21 +42,21 @@ const Container = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
+    // overflow: hidden;
   }
   .rover{
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${Mars});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
+    // overflow: hidden;
   }
   .asteroid{
     background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${AsteroidPic});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
+    // overflow: hidden;
    
   }
 `;
@@ -68,19 +70,41 @@ a {
   height: 25rem;
   color: #ffff;
   text-decoration: none;
+  // text-align: center;
   }
 `;
 
 function Explore() {
   return (
-    <Wrapper>
-      <Nav />
-      <Container className="cards">
-        <ExploreWrap className="potd"><Link to="/apod">Picture of The Day</Link></ExploreWrap>
-        <ExploreWrap className="rover"><Link to="/rover">Rovers</Link></ExploreWrap>
-        <ExploreWrap className="asteroid"><Link to="/asteroid">Objects Near Earth</Link></ExploreWrap>
-      </Container>
-    </Wrapper>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <Nav />
+        <Container className="cards">
+          <motion.div
+            initial={{ x: -700 }}
+            animate={{ x: 0 }}
+          >
+            <ExploreWrap className="potd"><Link to="/apod">Picture of The Day</Link></ExploreWrap>
+          </motion.div>
+          <motion.div
+            initial={{ y: 700 }}
+            animate={{ y: 0 }}
+          >
+            <ExploreWrap className="rover"><Link to="/rover">Rovers</Link></ExploreWrap>
+          </motion.div>
+          <motion.div
+            initial={{ x: 700 }}
+            animate={{ x: 0 }}
+          >
+            <ExploreWrap className="asteroid"><Link to="/asteroid">Objects Near Earth</Link></ExploreWrap>
+          </motion.div>
+        </Container>
+      </Wrapper>
+    </motion.div>
   );
 }
 
