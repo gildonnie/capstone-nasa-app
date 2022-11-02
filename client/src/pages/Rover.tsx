@@ -175,7 +175,9 @@ function Rover() {
                     <legend>Camera:</legend>
                     {rover !== 'Perseverance' && regCameras.map((cameras) => (
                       <>
-                        {rover && camerasByRover[rover].includes(cameras.Abbreviation) && (
+                        {rover && camerasByRover[rover as keyof typeof camerasByRover].includes(
+                          cameras.Abbreviation,
+                        ) && (
                         <label id={cameras.Abbreviation} htmlFor={cameras.Abbreviation}>
                           <input
                             type="radio"
@@ -186,6 +188,7 @@ function Rover() {
                           {cameras.Name}
                         </label>
                         )}
+                        {' '}
                       </>
                     ))}
                   </FieldWrap>
