@@ -1,7 +1,12 @@
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { RootState } from '../store';
 import { useAppSelector } from '../store/hooks';
+import { useAuth } from '../utils/AuthContext';
 
 const ImgWrap = styled.div`
   img {
@@ -29,11 +34,17 @@ const ImgWrap = styled.div`
   }
   
 `;
+const Icon = styled(FontAwesomeIcon)`  
+  height: 25px;
+  cursor: pointer;
+`;
 function ImageComponent() {
+  const [colors, setColors] = useState('white');
   const { rData } = useAppSelector((state: RootState) => state.rover);
-
+  const { currentUser } = useAuth();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  console.log(rData);
   const goToPrev = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? rData.length - 1 : currentIndex - 1;
@@ -44,11 +55,28 @@ function ImageComponent() {
     const isLastSlide = currentIndex === rData.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-    console.log(rData[currentIndex].img_src);
-    console.log(currentIndex);
   };
   const goToReset = () => {
     setCurrentIndex(0);
+  };
+
+  const addFavorites = async () => {
+    const { img_src, earth_date } = rData[currentIndex];
+    setColors('red');
+    const Data = {
+      img_src: { img_src },
+      earth_date: { earth_date },
+      email: currentUser.email,
+    };
+    const results = await fetch('/rfavorites', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Data),
+    });
+    const resultJson = await results.json();
+    return resultJson;
   };
   return (
     <ImgWrap>
@@ -56,6 +84,7 @@ function ImageComponent() {
       <button type="button" onClick={goToReset}>Reset</button>
       <button type="button" onClick={goToNext}>Next</button>
       <div>
+        <Icon className="heart" type="submit" onClick={addFavorites} style={{ color: `${colors}` }} icon={faHeart as IconProp} />
         <h2>
           Image:
           {' '}

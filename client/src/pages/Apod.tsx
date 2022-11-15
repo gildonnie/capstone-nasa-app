@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { shallowEqual } from 'react-redux';
-// import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +12,7 @@ import ApodData from '../components/ApodData';
 import { setNewDate, setInput } from '../store/apodSlice';
 import NavBar from '../components/NavBar';
 import BackgroundImg from '../images/potdBack.jpg';
+import { useAuth } from '../utils/AuthContext';
 
 const Wrapper = styled.div`
 background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${BackgroundImg});
@@ -100,22 +100,23 @@ const Icon = styled(FontAwesomeIcon)`
 `;
 
 function Apod() {
-  const [colors, setColor] = useState('white');
+  const [colors, setColors] = useState('white');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { apData, input } = useAppSelector((state: RootState) => state.apod, shallowEqual);
   const {
     url, title, date, explanation,
   } = apData;
-
+  const { currentUser } = useAuth();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(setNewDate(input));
   };
 
   const addFavorites = async () => {
-    setColor('red');
+    setColors('red');
     const Data = {
+      email: currentUser.email,
       title: { title },
       date: { date },
       url: { url },

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // import TsParticles from '../components/tsParticles';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 // import Space from '../images/space.jpg';
 // import Space3 from '../images/space3.jpg';
@@ -65,6 +66,10 @@ const Button = styled.button`
     cursor: pointer;
     border: 1px solid #96B1AD;
     color: #96B1AD;
+  }
+  a {
+    text-decoration: none;
+    color: white;
   }
 `;
 const ButtonWrap = styled.div`
@@ -148,9 +153,9 @@ function Home() {
         </div>
         <ButtonWrap>
           <h1>Explore These Features By Signing Up!</h1>
-          <Button type="button">Sign up</Button>
+          <Link to="/signup"><Button type="button">Sign Up</Button></Link>
           <p>Already a Member?</p>
-          <Button type="button">Sing In</Button>
+          <Link to="/signin"><Button type="button">Sign In</Button></Link>
         </ButtonWrap>
       </InfoContainer>
       <Footer />

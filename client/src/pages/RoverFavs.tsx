@@ -49,67 +49,61 @@ const Border = styled.div`
   }
 `;
 
-type dateData = {
-  date: string,
+type dataImgUrl = {
+  img_src: string,
 }
-type dataUrl = {
-  url: string,
-}
-type dataTitle = {
-  title: string,
+type dataEarthDate = {
+  earth_date: string,
 }
 type dataEmail = {
   email: string,
 }
 
 type FavTypes = {
-  date?: dateData,
-  url?: dataUrl,
-  title?: dataTitle,
-  email?: dataEmail,
   _id: string,
+  img_src?: dataImgUrl,
+  earth_date? : dataEarthDate,
+  email?: dataEmail,
 }
 type favorite = {
-  date: string,
-  url: string,
-  title: string,
   _id: string,
-  email: string,
+  img_src?: string,
+  earth_date?: string,
+  email?: string,
 }
 
 function Favorites() {
   const navigate = useNavigate();
-  const [favorites, setFavorites] = useState<favorite[]>([]);
+  const [rofavorites, setRofavorites] = useState<favorite[]>([]);
   const { currentUser } = useAuth();
   useEffect(() => {
     const fetchFavoirtes = async () => {
-      const fav = await fetch('/favorites');
+      const fav = await fetch('/rfavorites');
       const FavData = await fav.json();
       const newFav = FavData.map((item: FavTypes) => {
         const favObj = {
-          email: item.email,
-          date: item.date?.date,
-          url: item.url?.url,
-          title: item.title?.title,
           _id: item._id,
+          img_src: item.img_src?.img_src,
+          earth_date: item.earth_date?.earth_date,
+          email: item.email,
         };
         return favObj;
       });
-      setFavorites(newFav);
+      setRofavorites(newFav);
     };
     fetchFavoirtes();
   }, []);
 
   const deleteFav = (_id: string, e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    fetch(`/favorites/${_id}`, { method: 'DELETE' })
+    fetch(`/rfavorites/${_id}`, { method: 'DELETE' })
       .then((response) => {
         console.log(response.status); navigate(0);
       });
   };
 
-  const downloadImg = (url: any, title: string) => {
-    saveAs(url, `${title}.jpg`);
+  const downloadImg = (img_src: any) => {
+    saveAs(img_src, 'image.jpg');
     // saveAs(url, `${title}.jpg`);
   };
 
@@ -122,18 +116,17 @@ function Favorites() {
       <FavWrap>
         <NavBar />
         <div className="wrapper">
-          {Object.keys(favorites).length > 0 && Object.keys(favorites).map((value) => {
+          {Object.keys(rofavorites).length > 0 && Object.keys(rofavorites).map((value) => {
             const {
-              url, title, date, _id, email,
-            } = favorites[parseInt(value, 10)];
+              _id, img_src, earth_date, email,
+            } = rofavorites[parseInt(value, 10)];
             if (email === currentUser.email) {
               return (
                 <Border>
-                  <img id="photo" src={url} alt="favorite images" />
-                  <p>{title}</p>
-                  <p>{date}</p>
+                  <img id="photo" src={img_src} alt="favorite images" />
+                  <p>{earth_date}</p>
                   <button type="button" onClick={(e) => deleteFav(_id, e)}>Remove</button>
-                  <button type="button" onClick={() => downloadImg(url, title)}>Download</button>
+                  <button type="button" onClick={() => downloadImg(img_src)}>Download</button>
                 </Border>
               );
             }
