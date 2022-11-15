@@ -3,6 +3,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const favoriteRoutes = require('./routes/Favorites')
+const RovFavoriteRoutes = require('./routes/RovFavs')
 require('dotenv').config( {path: './.env'} );
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(logger('dev')); // sets up logging in dev (information about the request
 app.use(express.static('public')); // before looking into routes look in this location first for html files/imgs/pdfs different files (will be changed when front end is connected)
 
 app.use('/favorites', favoriteRoutes)
+app.use('/rfavorites', RovFavoriteRoutes)
 
 const PORT = process.env.PORT || 5000;
 const url = process.env.MONGO_URI
