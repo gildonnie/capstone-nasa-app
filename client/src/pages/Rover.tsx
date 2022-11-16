@@ -212,7 +212,7 @@ function Rover() {
               ) : null}
           </form>
         </div>
-        <ImageComponent />
+        {rover && <ImageComponent />}
       </Wrapper>
     </motion.div>
   );

@@ -3,8 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '.';
 
 type dataRoverTypes = {
-  length: number;
+  length: number
   img_src: string
+  earth_date: string
  }
 
 type dataRover= {
