@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 // import TsParticles from '../components/tsParticles';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
 // import Space from '../images/space.jpg';
 // import Space3 from '../images/space3.jpg';
