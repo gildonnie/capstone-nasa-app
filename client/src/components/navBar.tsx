@@ -52,7 +52,11 @@ function Nav() {
         <li>
           <Link to="/favorites">Favorites</Link>
         </li>
-        <li>Login</li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
     </NavWrap>
   );

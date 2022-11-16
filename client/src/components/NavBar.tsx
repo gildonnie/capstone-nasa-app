@@ -55,6 +55,8 @@ function Nav() {
         <li>
           <Link to="/login">Login</Link>
         </li>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
     </NavWrap>
   );
