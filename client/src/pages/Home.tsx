@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // import TsParticles from '../components/tsParticles';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 // import Space from '../images/space.jpg';
 // import Space3 from '../images/space3.jpg';
@@ -29,13 +29,21 @@ const BackImg = styled.div`
     font-size: 20px;
   }
 `;
+// const Img = styled.div`
+//   background-image: url(${Space3});
+//   min-height: 400px;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// `;
+
 const InfoContainer = styled.div`
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${Earth2});
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 div {
-  width: 1200px;
+  width: 900px;
   text-align: center;
   margin-left: 50%;
   transform: translate(-50%);
@@ -59,6 +67,10 @@ const Button = styled.button`
     border: 1px solid #96B1AD;
     color: #96B1AD;
   }
+  a {
+    text-decoration: none;
+    color: white;
+  }
 `;
 const ButtonWrap = styled.div`
   p {
@@ -69,18 +81,11 @@ const ButtonWrap = styled.div`
 function Home() {
   return (
     <>
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        // exit={{ opacity: 0 }}
-        transition={{ delay: 0.4 }}
-      >
         <BackImg>
           <Nav />
           <h1>ES</h1>
           <h2>Explore Space</h2>
         </BackImg>
-      </motion.div>
       {/* <TsParticles /> */}
       <InfoContainer>
         <div>
@@ -116,9 +121,9 @@ function Home() {
           <h1>What is Explore Space (ES)?</h1>
           <p>
             Here in ES we use NASAs Public APIs and explore the wonders of space. There are
-            three APIs that we tap into.
+            three APIs that we tape into.
             <p>
-              The first one is the APOD API. One of the most
+              The first one is the APOD API One of the most
               popular websites at NASA is the Astronomy Picture of the Day. In fact,
               this website is one of the most popular websites across all federal
               agencies. It has the popular appeal of a Justin Bieber video. This
@@ -148,9 +153,9 @@ function Home() {
         </div>
         <ButtonWrap>
           <h1>Explore These Features By Signing Up!</h1>
-          <Button type="button">Sign up</Button>
+          <Link to="/signup"><Button type="button">Sign Up</Button></Link>
           <p>Already a Member?</p>
-          <Button type="button">Sing In</Button>
+          <Link to="/signin"><Button type="button">Sign In</Button></Link>
         </ButtonWrap>
       </InfoContainer>
       <Footer />

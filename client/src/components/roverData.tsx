@@ -24,6 +24,8 @@ function RoverData() {
     async function getRoverData() {
       const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}/?api_key=${apiKey}`);
       const dataRover = await res.json();
+      console.log(dataRover);
+      console.log(dataRover);
       dispatch(setRovData(dataRover.photo_manifest));
     }
     if (rover) {
