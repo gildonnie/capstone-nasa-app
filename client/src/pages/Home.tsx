@@ -43,7 +43,7 @@ background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 div {
-  width: 900px;
+  width: 1200px;
   text-align: center;
   margin-left: 50%;
   transform: translate(-50%);
@@ -81,11 +81,18 @@ const ButtonWrap = styled.div`
 function Home() {
   return (
     <>
-      <BackImg>
-        <Nav />
-        <h1>ES</h1>
-        <h2>Explore Space</h2>
-      </BackImg>
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+        transition={{ delay: 0.4 }}
+      >
+        <BackImg>
+          <Nav />
+          <h1>ES</h1>
+          <h2>Explore Space</h2>
+        </BackImg>
+      </motion.div>
       {/* <TsParticles /> */}
       <InfoContainer>
         <div>
@@ -121,9 +128,9 @@ function Home() {
           <h1>What is Explore Space (ES)?</h1>
           <p>
             Here in ES we use NASAs Public APIs and explore the wonders of space. There are
-            three APIs that we tape into.
+            three APIs that we tap into.
             <p>
-              The first one is the APOD API One of the most
+              The first one is the APOD API. One of the most
               popular websites at NASA is the Astronomy Picture of the Day. In fact,
               this website is one of the most popular websites across all federal
               agencies. It has the popular appeal of a Justin Bieber video. This

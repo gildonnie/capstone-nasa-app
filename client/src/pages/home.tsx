@@ -29,6 +29,14 @@ const BackImg = styled.div`
     font-size: 20px;
   }
 `;
+// const Img = styled.div`
+//   background-image: url(${Space3});
+//   min-height: 400px;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// `;
+
 const InfoContainer = styled.div`
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${Earth2});
 background-position: center;

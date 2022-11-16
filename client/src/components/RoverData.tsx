@@ -11,7 +11,7 @@ function RoverData() {
   const { rover, sol, camera } = roverSettings;
   useEffect(() => {
     async function getRoverData() {
-      const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&page=1&camera=${camera}&api_key=${apiKey}`);
+      const res = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${apiKey}`);
       const dataRover = await res.json();
       dispatch(setData(dataRover.photos));
     }
