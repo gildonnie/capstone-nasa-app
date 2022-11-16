@@ -81,11 +81,11 @@ const ButtonWrap = styled.div`
 function Home() {
   return (
     <>
-        <BackImg>
-          <Nav />
-          <h1>ES</h1>
-          <h2>Explore Space</h2>
-        </BackImg>
+      <BackImg>
+        <Nav />
+        <h1>ES</h1>
+        <h2>Explore Space</h2>
+      </BackImg>
       {/* <TsParticles /> */}
       <InfoContainer>
         <div>
