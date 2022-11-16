@@ -11,6 +11,9 @@ const favSchema = new Schema ({
   url: {
     type: Object,
   },
+  email: {
+    type: Object,
+  },
 });
 
 const Favorite = model('Favorite', favSchema);
