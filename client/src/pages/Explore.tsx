@@ -59,6 +59,14 @@ const Container = styled.div`
     // overflow: hidden;
    
   }
+  .asteroidGame{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${AsteroidPic});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // overflow: hidden;
+   
+  }
 `;
 
 const ExploreWrap = styled.div`
@@ -101,6 +109,12 @@ function Explore() {
             animate={{ x: 0 }}
           >
             <ExploreWrap className="asteroid"><Link to="/asteroid">Objects Near Earth</Link></ExploreWrap>
+          </motion.div>
+          <motion.div
+            initial={{ x: 700 }}
+            animate={{ x: 0 }}
+          >
+            <ExploreWrap className="asteroidGame"><Link to="/game">Ateroid Game</Link></ExploreWrap>
           </motion.div>
         </Container>
       </Wrapper>
