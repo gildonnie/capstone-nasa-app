@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ExploreImg from '../images/explore.jpg';
 import AsteroidPic from '../images/asteroid.jpg';
+import AsteroidGame from '../images/asteroidGame.png';
 import Mars from '../images/mars.jpg';
 import Potd from '../images/potd.jpg';
 import Nav from '../components/NavBar';
@@ -26,9 +27,9 @@ const Wrapper = styled.div`
 const Container = styled.div`
   margin-top: 4rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   div {
-    margin-left: 8rem;
+    margin-left: 2rem;
     filter: drop-shadow(0 0 .5rem #A27468);
     transition: .3s;
     border-radius: 1.5rem;
@@ -60,7 +61,7 @@ const Container = styled.div`
    
   }
   .asteroidGame{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${AsteroidPic});
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${AsteroidGame});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -114,7 +115,7 @@ function Explore() {
             initial={{ x: 700 }}
             animate={{ x: 0 }}
           >
-            <ExploreWrap className="asteroidGame"><Link to="/game">Ateroid Game</Link></ExploreWrap>
+            <ExploreWrap className="asteroidGame"><Link to="/game">Asteroid Game</Link></ExploreWrap>
           </motion.div>
         </Container>
       </Wrapper>

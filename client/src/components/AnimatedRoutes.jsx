@@ -11,7 +11,7 @@ import Signin from '../pages/Signin';
 import Profile from '../pages/Profile';
 import SignUp from '../pages/Signup';
 import RovFavs from '../pages/RoverFavs';
-import Game from '../pages/AsteroidGame';
+import StartGame from './StartGame';
 import { AuthProvider } from '../utils/AuthContext';
 import PrivateRou from '../pages/PrivateRou';
 
@@ -25,7 +25,7 @@ function AnimatedRoutes() {
           <Route path="/apod" element={<Apod />} />
           <Route path="/asteroid" element={<Asteroid />} />
           <Route path="/rover" element={<Rover />} />
-          <Route path="/game" element={<Game />} />
+          <Route path="/game" element={<StartGame />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<PrivateRou />}>
             <Route path="/profile" element={<Profile />} />
