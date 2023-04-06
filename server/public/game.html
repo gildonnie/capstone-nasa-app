@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asteroid Game</title>
+</head>
+<body
+  style="background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;"
+>
+  <input
+    type="button"
+    onclick="location.href = `/`"
+    value="Exit" 
+    style=" 
+    width: 200px;
+    height: 45px;
+    color: red;
+    margin: 3px;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid #00B2A7;
+    color: #00B2A7;"
+  />
+  <canvas id="canvas" width="1200" height="900" style="margin-top: .25rem; border: 1px solid gray;;"></canvas>
+  <script src="game.js"></script>
+</body>
+</html>
