@@ -2,7 +2,7 @@
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { saveAs } from 'file-saver';
 import NavBar from '../components/NavBar';
@@ -78,7 +78,7 @@ type favorite = {
 }
 
 function Favorites() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [favorites, setFavorites] = useState<favorite[]>([]);
   const { currentUser } = useAuth();
   useEffect(() => {
@@ -104,7 +104,9 @@ function Favorites() {
     e.preventDefault();
     fetch(`/favorites/${_id}`, { method: 'DELETE' })
       .then((response) => {
-        console.log(response.status); navigate(0);
+        console.log(response.status);
+        // navigate(0);
+        window.location.reload();
       });
   };
 

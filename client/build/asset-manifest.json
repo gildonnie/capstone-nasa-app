@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.js": "/static/js/main.4aa76fbf.js",
+    "static/js/787.8f8c5700.chunk.js": "/static/js/787.8f8c5700.chunk.js",
+    "static/media/asteroid.jpg": "/static/media/asteroid.5281b7ebd3d3670d211c.jpg",
+    "static/media/potdBack.jpg": "/static/media/potdBack.2281fa704105a7f12a65.jpg",
+    "static/media/asteroidBack.jpg": "/static/media/asteroidBack.3b44cd8aef8a69c5489f.jpg",
+    "static/media/earth.jpg": "/static/media/earth.de5659898d3bfc5eb8ea.jpg",
+    "static/media/windowEarth.jpg": "/static/media/windowEarth.b12983d5b678604758d7.jpg",
+    "static/media/stars.jpg": "/static/media/stars.81d7df5caaef3bb8370c.jpg",
+    "static/media/mars.jpg": "/static/media/mars.25e37ec490a7d46e4145.jpg",
+    "static/media/potd.jpg": "/static/media/potd.9ef1d4468773eed149e6.jpg",
+    "static/media/marsBack.jpg": "/static/media/marsBack.9476da02b58cccdd323f.jpg",
+    "static/media/asteroidGame.png": "/static/media/asteroidGame.d74fceb978191c4aa5d3.png",
+    "static/media/explore.jpg": "/static/media/explore.18a4c7eb224429d7868a.jpg",
+    "static/media/asteroidCard4.jpg": "/static/media/asteroidCard4.a2cf627ae34b4b9bb812.jpg",
+    "static/media/asteroidCard.jpg": "/static/media/asteroidCard.453fd191b6cd4fc1c220.jpg",
+    "static/media/Eclip.svg": "/static/media/Eclip.03af6e771a3752b134b7c925b9a9d617.svg",
+    "static/media/moon.svg": "/static/media/moon.fcce50461b89d8f7f402043666b43632.svg",
+    "index.html": "/index.html",
+    "main.4aa76fbf.js.map": "/static/js/main.4aa76fbf.js.map",
+    "787.8f8c5700.chunk.js.map": "/static/js/787.8f8c5700.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4aa76fbf.js"
+  ]
+}

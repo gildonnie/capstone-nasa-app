@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
-// import Space from '../images/space.jpg';
-// import Space3 from '../images/space3.jpg';
 import Earth from '../images/earth.jpg';
 import Earth2 from '../images/windowEarth.jpg';
 import Nav from '../components/NavBar';
@@ -15,7 +13,8 @@ const BackImg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
+  background-attachment: fixed;
+  // width: 1200;
   height: 100vh;
   h1 {
     margin: 0;
@@ -30,13 +29,6 @@ const BackImg = styled.div`
     font-size: 20px;
   }
 `;
-// const Img = styled.div`
-//   background-image: url(${Space3});
-//   min-height: 400px;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// `;
 
 const InfoContainer = styled.div`
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${Earth2});

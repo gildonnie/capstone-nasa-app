@@ -1,11 +1,3 @@
-// import Canvas from './RenderingCnvs';
-// import laserFX from '../src/sounds/laser.m4a';
-// import explodeFX from '../src/sounds/explode.m4a';
-// import hitFX from '../src/sounds/hit.m4a';
-// import muiscHigh from '../src/sounds/music-high.m4a';
-// import musicLow from '../src/sounds/music-low.m4a';
-// import thrustFX from '../src/sounds/thrust.m4a';
-
 const FPS = 30; // frames /sec
 // ship
 const SHIP_SIZE = 30; // ship in px
@@ -41,8 +33,8 @@ const SHOW_BOUNDING = false;// show bounding boxes
 const TEXT_FADE_TIME = 2.5; // text fade time in secs
 const TEXT_SIZE = 40; // text font size in pxs
 const GAME_LIVES = 3; // number of lives
-const SOUND_ON = false;
-const MUSIC_ON = false;
+const SOUND_ON = true;
+const MUSIC_ON = true;
 
 const canv = document.getElementById('canvas');
 const ctx = canv.getContext('2d');
@@ -502,7 +494,7 @@ function AsteroidGame() {
   let vert;
   let offs;
   for (let i = 0; i < roids.length; i += 1) {
-    ctx.strokeStyle = 'red';
+    ctx.strokeStyle = 'rgb(0,178,167)';
     ctx.lineWidth = SHIP_SIZE / 20;
     // get asteroid properties
     x = roids[i].x;

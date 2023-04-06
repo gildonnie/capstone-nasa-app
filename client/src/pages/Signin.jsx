@@ -4,19 +4,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAuth } from '../utils/AuthContext';
 import NavBar from '../components/NavBar';
-import Moon from '../images/moon.jpg';
+import Moon from '../images/moon.svg';
 
-const Main = styled.main`
-  text-align: center;
+const Main = styled.div`
+text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
   .image {
-    width: 100vh;
-    height: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${Moon});
+    margin-left: 15rem;
+    text-align: end;
+    margin-top: 70px;
+    width: 800px;
+    height: 375px;
+    background-image: url(${Moon});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .signin {
+    margin-right: 30rem;
   }
 `;
 
@@ -66,7 +72,7 @@ function Signin() {
       setError('');
       setLoading(true);
       await signin(email?.current?.value, password?.current?.value);
-      navigate('/profile');
+      navigate('/');
     } catch {
       setError('Failed to sign in');
     }
@@ -78,7 +84,7 @@ function Signin() {
       <NavBar />
       <Main>
         <div className="image" />
-        <div>
+        <div className="signin">
           <h2>Sign In</h2>
           {error && <p>{error}</p>}
           <Form onSubmit={handleSubmit}>

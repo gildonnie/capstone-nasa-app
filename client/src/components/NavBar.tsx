@@ -9,7 +9,6 @@ import { useAuth } from '../utils/AuthContext';
 const NavWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
   padding-top: 1rem;
   ul {
     margin-right: 6rem;
